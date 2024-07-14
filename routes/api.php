@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmailCodeController;
+use App\Http\Controllers\ImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +22,8 @@ Route::name('api.')
                 Route::get('/me', [AuthController::class, 'me']);
             });
         });
+
+        Route::apiResource('image', ImageController::class)->only(['index', 'store', 'show', 'destroy']);
+
+        Route::apiResource('/email-code', EmailCodeController::class)->only(['store']);
     });

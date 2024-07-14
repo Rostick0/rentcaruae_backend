@@ -1,13 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\EmailCode;
 
-use App\Models\EmailCode;
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class LoginAuthRequest extends FormRequest
+class StoreEmailCodeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +22,7 @@ class LoginAuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|max:255|' . Rule::exists(User::class, 'email'),
-            'code' => 'required|' . Rule::exists(EmailCode::class, 'code')->where('email', $this->email),
+            'email' => 'required|email|max:255',
         ];
     }
 }
