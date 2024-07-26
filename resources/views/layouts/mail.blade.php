@@ -39,7 +39,7 @@
                 <table cellpadding="0" cellspacing="0" style="width:100%">
                     <tr align="center">
                         <td style="padding:16px 0 90px 0">
-                            <img src="{{ url('images/mail/buycaruae.png') }}" alt="buycaruae" width="171px"
+                            <img src="{{ url('images/mail/RentCarUAE.png') }}" alt="RentCarUAE" width="171px"
                                 height="33px" />
                         </td>
                     </tr>
@@ -56,7 +56,7 @@
                             <table cellpadding="0" cellspacing="0" style="color:#ffffff;width:100%">
                                 <tr>
                                     <td style="font-size:1.75em;font-weight:700;letter-spacing:0.05em">
-                                        buycaruae
+                                        RentCarUAE
                                     </td>
                                     <td align="right" style="text-align:right;white-space:nowrap;">
                                         <a href="" align="right"
@@ -103,7 +103,7 @@
                     <tr>
                         <td style="font-size:0.875em;">
                             <span style="color:#d3d3d3;display:inline-block;padding:0 16px 4px 0">
-                                © BuyCarUAE 2024
+                                © RentCarUAE 2024
                             </span>
                             <a href="" style="color:#d3d3d3;display:inline-block;padding:0 8px 4px 0">
                                 Privacy policy</a>
