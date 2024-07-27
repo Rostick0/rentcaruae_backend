@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class CompanyController extends ApiController
+class UserController extends ApiController
 {
     public function __construct()
     {
-        $this->model = new Company;
+        $this->model = new User;
     }
 }

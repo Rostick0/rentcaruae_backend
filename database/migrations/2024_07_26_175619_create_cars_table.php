@@ -27,6 +27,7 @@ return new class extends Migration
             $table->foreignId('transmission_id')->references('id')->on('transmissions')->onDelete('cascade');
             $table->foreignId('colour_id')->references('id')->on('colours')->onDelete('cascade');
             $table->foreignId('colour_interior_id')->references('id')->on('colours')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

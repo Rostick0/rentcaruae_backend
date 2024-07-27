@@ -24,6 +24,7 @@ class Car extends Model
         'transmission_id',
         'colour_id',
         'colour_interior_id',
+        'user_id',
     ];
 
     public function brand()
@@ -59,5 +60,19 @@ class Car extends Model
     public function colour_interior()
     {
         return $this->belongsTo(Colour::class, 'colour_interior_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function price_periods() {
+        return $this->hasMany(PricePeriod::class);
+    }
+
+    public function car_options()
+    {
+        return $this->hasMany(CarOption::class);
     }
 }
