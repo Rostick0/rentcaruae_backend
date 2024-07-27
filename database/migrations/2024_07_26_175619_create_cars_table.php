@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('seats');
             $table->float('security_deposit')->nullable();
             $table->float('deposit_free_per_day')->nullable();
-            $table->foreignId('make_id')->references('id')->on('makes')->onDelete('cascade');
+            $table->foreignId('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->foreignId('model_car_id')->references('id')->on('model_cars')->onDelete('cascade');
             $table->foreignId('type_car_id')->references('id')->on('type_cars')->onDelete('cascade');
             $table->foreignId('fuel_type_id')->references('id')->on('fuel_types')->onDelete('cascade');
