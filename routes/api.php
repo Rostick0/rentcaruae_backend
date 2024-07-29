@@ -8,6 +8,7 @@ use App\Http\Controllers\ColourController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\EmailCodeController;
 use App\Http\Controllers\FuelTypeController;
+use App\Http\Controllers\GenerationController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ModelCarController;
 use App\Http\Controllers\OperationController;
@@ -43,10 +44,12 @@ Route::name('api.')
         Route::apiResource('/countries', CountryController::class)->only(['index']);
 
         Route::apiResource('/brands', BrandController::class)->only(['index']);
+        Route::apiResource('/model-cars', ModelCarController::class)->only(['index']);
+        Route::apiResource('/model-cars', GenerationController::class)->only(['index']);
+
         Route::apiResource('/colours', ColourController::class)->only(['index']);
         Route::apiResource('/fuel-types', FuelTypeController::class)->only(['index']);
         Route::apiResource('/options', OptionController::class)->only(['index']);
-        Route::apiResource('/model-cars', ModelCarController::class)->only(['index']);
         Route::apiResource('/type-cars', TypeCarController::class)->only(['index']);
 
         Route::apiResource('/operations', OperationController::class)->only(['index']);

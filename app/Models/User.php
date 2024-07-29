@@ -18,8 +18,10 @@ class User extends Authenticatable implements JWTSubject
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'full_name',
         'email',
+        'tel',
+        'whatsapp',
     ];
 
     /**
@@ -63,5 +65,15 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function license()
+    {
+        return $this->morphOne(FileRelationship::class, 'file_relable');
+    }
+
+    public function sertificate()
+    {
+        return $this->morphOne(FileRelationship::class, 'file_relable');
     }
 }

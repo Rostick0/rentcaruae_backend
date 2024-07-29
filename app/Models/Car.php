@@ -14,27 +14,23 @@ class Car extends Model
         'is_show',
         'is_new',
         'is_luxury',
+        'year',
         'seats',
-        'security_deposit',
+        'min_days',
         'deposit_free_per_day',
-        'brand_id',
-        'model_car_id',
+        'generation_id',
         'type_car_id',
         'fuel_type_id',
         'transmission_id',
-        'colour_id',
-        'colour_interior_id',
+        'color_id',
+        'colorinterior_id',
         'user_id',
     ];
 
-    public function brand()
-    {
-        return $this->belongsTo(Brand::class);
-    }
 
-    public function model_car()
+    public function generation()
     {
-        return $this->belongsTo(ModelCar::class);
+        return $this->belongsTo(Generation::class);
     }
 
     public function type_car()
@@ -57,9 +53,9 @@ class Car extends Model
         return $this->belongsTo(Colour::class);
     }
 
-    public function colour_interior()
+    public function colorinterior()
     {
-        return $this->belongsTo(Colour::class, 'colour_interior_id');
+        return $this->belongsTo(Colour::class, 'colorinterior_id');
     }
 
     public function user()
@@ -67,7 +63,8 @@ class Car extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function price_periods() {
+    public function price_periods()
+    {
         return $this->hasMany(PricePeriod::class);
     }
 

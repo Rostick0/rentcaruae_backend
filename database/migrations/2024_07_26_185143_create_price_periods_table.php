@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('price_periods', function (Blueprint $table) {
             $table->id();
             $table->float('price');
-            $table->float('mileage');
+            $table->float('mileage')->nullable( );
             $table->string('type');
+            $table->integer('period')->nullable();
             $table->boolean('is_show');
             $table->foreignId('car_id')->references('id')->on('cars')->onDelete('cascade');
             $table->timestamps();

@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('operations', function (Blueprint $table) {
+        Schema::create('file_rels', function (Blueprint $table) {
             $table->id();
-            $table->string('tel');
-            $table->string('full_name');
-            $table->string('email');
-            $table->integer('period');
-            $table->float('price');
+            $table->foreignId('file_id')->references('id')->on('files')->onDelete('cascade');
+            $table->morphs('file_relable');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('operations');
+        Schema::dropIfExists('file_rels');
     }
 };
