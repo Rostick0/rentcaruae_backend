@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('model_cars', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->year('year_from')->nullable();
+            $table->year('year_to')->nullable();
             $table->foreignId('brand_id')->references('id')->on('brands')->onDelete('cascade');
         });
     }

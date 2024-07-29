@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             BrandSeeder::class,
             ModelCarSeeder::class,
             GenerationSeeder::class,
+            TransmissionSeeder::class
         ]);
     }
 }

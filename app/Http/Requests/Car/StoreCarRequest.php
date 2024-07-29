@@ -28,17 +28,20 @@ class StoreCarRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'is_show' => '',
+            'is_show' => 'required',
             'is_new' => '',
             'is_luxury' => '',
+            'is_deposite'  => '',
+            'is_special'  => '',
             'year' => 'required|digits:4|numeric',
             'seats' => 'required|numeric',
             'min_days' => 'nullable|numeric',
+            'description' => 'nullable|max:600',
             'generation_id' => 'required|' . Rule::exists(Generation::class),
             'type_car_id' => 'required|' . Rule::exists(TypeCar::class),
             'fuel_type_id' => 'required|' . Rule::exists(FuelType::class),
             'transmission_id' => 'required|' . Rule::exists(Transmission::class),
-            'color_id' => 'required|' . Rule::exists(Color::class),
+            'colour_id' => 'required|' . Rule::exists(Color::class),
             'colorinterior_id' => 'required|' . Rule::exists(Color::class),
         ];
     }

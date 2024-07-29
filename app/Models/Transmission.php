@@ -10,5 +10,6 @@ class Transmission extends Model
     use HasFactory;
 
     protected $fillable = [
+        'name'
     ];
 }

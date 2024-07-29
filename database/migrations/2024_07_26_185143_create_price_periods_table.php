@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('price_periods', function (Blueprint $table) {
             $table->id();
             $table->float('price');
-            $table->float('mileage')->nullable( );
-            $table->string('type');
+            $table->float('mileage')->nullable();
+            $table->string('type'); // price leasing_options rental_terms
             $table->integer('period')->nullable();
             $table->boolean('is_show');
             $table->foreignId('car_id')->references('id')->on('cars')->onDelete('cascade');

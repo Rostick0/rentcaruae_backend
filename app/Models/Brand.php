@@ -12,6 +12,7 @@ class Brand extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name'
+        'name',
+        'image_url'
     ];
 }

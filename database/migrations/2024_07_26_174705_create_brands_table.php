@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image_url');
+            $table->boolean('is_popular')->default(0);
         });
     }
 
