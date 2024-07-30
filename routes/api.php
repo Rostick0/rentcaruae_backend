@@ -8,7 +8,6 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\ColourController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\EmailCodeController;
-use App\Http\Controllers\FuelTypeController;
 use App\Http\Controllers\GenerationController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ModelCarController;
@@ -50,7 +49,6 @@ Route::name('api.')
         Route::apiResource('/categories', CategoryController::class)->only(['index']);
         Route::apiResource('/transmissions', TransmissionController::class)->only(['index']);
 
-        Route::apiResource('/fuel-types', FuelTypeController::class)->only(['index']);
         Route::apiResource('/options', OptionController::class)->only(['index']);
         Route::apiResource('/type-cars', TypeCarController::class)->only(['index']);
 

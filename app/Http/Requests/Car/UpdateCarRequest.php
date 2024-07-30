@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Car;
 
-use App\Models\FuelType;
 use App\Models\Generation;
 use App\Models\Transmission;
 use App\Models\TypeCar;
@@ -39,7 +38,6 @@ class UpdateCarRequest extends FormRequest
             'description' => 'nullable|max:600',
             'generation_id' => 'filled|' . Rule::exists(Generation::class),
             'type_car_id' => 'filled|' . Rule::exists(TypeCar::class),
-            'fuel_type_id' => 'filled|' . Rule::exists(FuelType::class),
             'transmission_id' => 'filled|' . Rule::exists(Transmission::class),
             'colour_id' => 'filled|' . Rule::exists(Color::class),
             'colorinterior_id' => 'filled|' . Rule::exists(Color::class),
