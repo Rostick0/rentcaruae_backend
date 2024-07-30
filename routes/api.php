@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ColourController;
 use App\Http\Controllers\CountryController;
@@ -46,6 +47,7 @@ Route::name('api.')
         Route::apiResource('/brands', BrandController::class)->only(['index']);
         Route::apiResource('/model-cars', ModelCarController::class)->only(['index']);
         Route::apiResource('/generation', GenerationController::class)->only(['index']);
+        Route::apiResource('/categories', CategoryController::class)->only(['index']);
         Route::apiResource('/transmissions', TransmissionController::class)->only(['index']);
 
         Route::apiResource('/fuel-types', FuelTypeController::class)->only(['index']);
