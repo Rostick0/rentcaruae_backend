@@ -46,14 +46,15 @@ Route::name('api.')
         Route::apiResource('/brands', BrandController::class)->only(['index']);
         Route::apiResource('/model-cars', ModelCarController::class)->only(['index']);
         Route::apiResource('/generation', GenerationController::class)->only(['index']);
+        Route::apiResource('/transmissions', TransmissionController::class)->only(['index']);
 
-        Route::apiResource('/colours', ColourController::class)->only(['index']);
         Route::apiResource('/fuel-types', FuelTypeController::class)->only(['index']);
         Route::apiResource('/options', OptionController::class)->only(['index']);
         Route::apiResource('/type-cars', TypeCarController::class)->only(['index']);
 
+        Route::apiResource('/colours', ColourController::class)->only(['index']);
+
         Route::apiResource('/operations', OperationController::class)->only(['index', 'store']);
-        // Route::apiResource('/transmissions', TransmissionController::class)->only(['index']);
 
         Route::apiResource('/users', UserController::class)->only(['index', 'show']);
 
