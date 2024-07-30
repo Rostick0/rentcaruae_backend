@@ -46,7 +46,7 @@ Route::name('api.')
 
         Route::apiResource('/brands', BrandController::class)->only(['index']);
         Route::apiResource('/model-cars', ModelCarController::class)->only(['index']);
-        Route::apiResource('/generation', GenerationController::class)->only(['index']);
+        Route::apiResource('/generations', GenerationController::class)->only(['index']);
         Route::apiResource('/categories', CategoryController::class)->only(['index']);
         Route::apiResource('/transmissions', TransmissionController::class)->only(['index']);
 
