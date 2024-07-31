@@ -26,7 +26,7 @@ class Car extends Model
         'type_car_id',
         'transmission_id',
         'colour_id',
-        'colorinterior_id',
+        'colour_interior_id',
         'user_id',
     ];
 
@@ -56,9 +56,9 @@ class Car extends Model
         return $this->belongsTo(Colour::class);
     }
 
-    public function colorinterior()
+    public function colour_interior()
     {
-        return $this->belongsTo(Colour::class, 'colorinterior_id');
+        return $this->belongsTo(Colour::class, 'colour_interior_id');
     }
 
     public function user()

@@ -42,7 +42,7 @@ class UpdateCarRequest extends FormRequest
             'type_car_id' => 'filled|' . Rule::exists(TypeCar::class),
             'transmission_id' => 'filled|' . Rule::exists(Transmission::class),
             'colour_id' => 'filled|' . Rule::exists(Color::class),
-            'colorinterior_id' => 'filled|' . Rule::exists(Color::class),
+            'colour_interior_id' => 'filled|' . Rule::exists(Color::class),
         ];
     }
 }

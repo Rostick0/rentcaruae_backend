@@ -42,7 +42,7 @@ class StoreCarRequest extends FormRequest
             'type_car_id' => 'required|' . Rule::exists(TypeCar::class),
             'transmission_id' => 'required|' . Rule::exists(Transmission::class),
             'colour_id' => 'required|' . Rule::exists(Color::class),
-            'colorinterior_id' => 'required|' . Rule::exists(Color::class),
+            'colour_interior_id' => 'required|' . Rule::exists(Color::class),
         ];
     }
 }
