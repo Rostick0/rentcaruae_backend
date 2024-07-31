@@ -24,8 +24,10 @@ return new class extends Migration
             $table->integer('min_days')->nullable();
             $table->text('description')->nullable();
             $table->foreignId('generation_id')->references('id')->on('generations')->onDelete('cascade');
+            $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreignId('type_car_id')->references('id')->on('type_cars')->onDelete('cascade');
             $table->foreignId('transmission_id')->references('id')->on('transmissions')->onDelete('cascade');
+            $table->foreignId('fuel_type_id')->references('id')->on('fuel_types')->onDelete('cascade');
             $table->foreignId('colour_id')->references('id')->on('colours')->onDelete('cascade');
             $table->foreignId('colorinterior_id')->references('id')->on('colours')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');

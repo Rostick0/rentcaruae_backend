@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\Transmission;
+use App\Models\FuelType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TransmissionSeeder extends Seeder
+class FuelTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $arr = ['Automatic', 'Mechanical'];
+        $arr = ['Petrol', 'Hybrid', 'Electro', 'Diesel', 'Gas', 'Gasoline', 'Hydrogen'];
 
         $data = array_map(
             fn ($name, $i) => [
@@ -24,6 +24,6 @@ class TransmissionSeeder extends Seeder
             array_keys($arr)
         );
 
-        Transmission::insert($data);
+        FuelType::insert($data);
     }
 }

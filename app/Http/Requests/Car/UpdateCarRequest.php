@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Car;
 
+use App\Models\Category;
 use App\Models\Generation;
 use App\Models\Transmission;
 use App\Models\TypeCar;
@@ -37,6 +38,7 @@ class UpdateCarRequest extends FormRequest
             'min_days' => 'nullable|numeric',
             'description' => 'nullable|max:600',
             'generation_id' => 'filled|' . Rule::exists(Generation::class),
+            'category_id' => 'filled|' . Rule::exists(Category::class),
             'type_car_id' => 'filled|' . Rule::exists(TypeCar::class),
             'transmission_id' => 'filled|' . Rule::exists(Transmission::class),
             'colour_id' => 'filled|' . Rule::exists(Color::class),

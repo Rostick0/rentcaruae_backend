@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Car;
 
+use App\Models\Category;
 use App\Models\Generation;
 use App\Models\Transmission;
 use App\Models\TypeCar;
@@ -37,6 +38,7 @@ class StoreCarRequest extends FormRequest
             'min_days' => 'nullable|numeric',
             'description' => 'nullable|max:600',
             'generation_id' => 'required|' . Rule::exists(Generation::class),
+            'category_id' => 'required|' . Rule::exists(Category::class),
             'type_car_id' => 'required|' . Rule::exists(TypeCar::class),
             'transmission_id' => 'required|' . Rule::exists(Transmission::class),
             'colour_id' => 'required|' . Rule::exists(Color::class),

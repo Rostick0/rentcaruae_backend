@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             BrandSeeder::class,
             ModelCarSeeder::class,
             GenerationSeeder::class,
+            FuelTypeSeeder::class,
             TransmissionSeeder::class,
             CategorySeeder::class,
             OptionSeeder::class,

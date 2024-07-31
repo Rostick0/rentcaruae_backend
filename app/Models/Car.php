@@ -22,6 +22,7 @@ class Car extends Model
         'description',
         'deposit_free_per_day',
         'generation_id',
+        'category_id',
         'type_car_id',
         'transmission_id',
         'colour_id',
@@ -38,6 +39,11 @@ class Car extends Model
     public function type_car()
     {
         return $this->belongsTo(TypeCar::class);
+    }
+
+    public function fuel_type()
+    {
+        return $this->belongsTo(FuelType::class);
     }
 
     public function transmission()
