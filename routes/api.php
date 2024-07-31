@@ -49,7 +49,7 @@ Route::name('api.')
         Route::apiResource('/model-cars', ModelCarController::class)->only(['index']);
         Route::apiResource('/generations', GenerationController::class)->only(['index']);
         Route::apiResource('/categories', CategoryController::class)->only(['index']);
-        Route::apiResource('/fuel-type', FuelTypeController::class)->only(['index']);
+        Route::apiResource('/fuel-types', FuelTypeController::class)->only(['index']);
         Route::apiResource('/transmissions', TransmissionController::class)->only(['index']);
 
         Route::apiResource('/options', OptionController::class)->only(['index']);
