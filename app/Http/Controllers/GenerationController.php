@@ -35,7 +35,7 @@ class GenerationController extends ApiController
                 ->where('year_to', '>=', $request->year);
 
             $data->union(
-                Filter::query($request, $this->model, $this->fillable_block, $this::getWhere($request), $this->q_request)->where('year_from', '<=', Carbon::now()->year())
+                Filter::query($request, $this->model, $this->fillable_block, $this::getWhere($request), $this->q_request)->where('year_from', '<=', Carbon::now()->format('Y'))
                     ->whereNull('year_to')
             );
 
