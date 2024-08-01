@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             TransmissionSeeder::class,
             CategorySeeder::class,
             OptionSeeder::class,
+            ColourSeeder::class,
         ]);
     }
 }
