@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->integer('period');
             $table->float('price');
+            $table->foreignId('car_id')->references('id')->on('cars')->onDelete('cascade');
             $table->timestamps();
         });
     }

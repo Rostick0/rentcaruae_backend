@@ -38,7 +38,6 @@ class ImageController extends Controller
                 'data' => $data
             ], 201);
         } catch (\Exception $e) {
-            dd($e);
             return new JsonResponse([
                 'message' => 'Loading error, try a smaller image',
                 'd' => $e->getMessage(),

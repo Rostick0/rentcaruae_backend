@@ -83,9 +83,9 @@ class Car extends Model
         return $this->hasMany(PricePeriod::class)->where('type', 'price');
     }
 
-    public function leasing_price()
+    public function price_leasing()
     {
-        return $this->hasMany(PricePeriod::class)->where('type', 'leasing_price');
+        return $this->hasMany(PricePeriod::class)->where('type', 'price_leasing');
     }
 
     public function price_special()

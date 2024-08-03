@@ -72,14 +72,14 @@ class CarController extends ApiController
             }
         }
 
-        if ($request->has('leasing_price')) {
+        if ($request->has('price_leasing')) {
             foreach ([30, 90, 180, 270, 360] as $index => $item) {
-                $data->leasing_price()->firstOrCreate([
-                    'type' => 'leasing_price',
+                $data->price_leasing()->firstOrCreate([
+                    'type' => 'price_leasing',
                     'period' => $item,
                 ], [
-                    'price' => $request->leasing_price[$index],
-                    'mileage' => $request->leasing_mileage[$index],
+                    'price' => $request->price_leasing[$index],
+                    'mileage' => $request->mileage_leasing[$index],
                 ]);
             }
         }

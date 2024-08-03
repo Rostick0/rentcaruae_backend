@@ -13,6 +13,13 @@ class Operation extends Model
         'tel',
         'full_name',
         'email',
+        'period',
         'price',
+        'car_id',
     ];
+
+    public function car()
+    {
+        return $this->belongsTo(Car::class);
+    }
 }

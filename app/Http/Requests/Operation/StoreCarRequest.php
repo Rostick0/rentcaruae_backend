@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Operation;
 
+use App\Models\Car;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreCarRequest extends FormRequest
 {
@@ -22,10 +24,12 @@ class StoreCarRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'without_deposite' => 'nullable',
             'tel' => 'required|max:25',
             'full_name' => 'required|max:255',
             'email' => 'email|max:255',
             'period' => 'required|numeric',
+            'car_id' => 'required|' . Rule::exists(Car::class, 'id'),
             'is_agree' => 'required|accepted'
         ];
     }
