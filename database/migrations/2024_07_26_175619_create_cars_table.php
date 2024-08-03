@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->boolean('is_show');
             $table->boolean('is_new')->default(0);
             $table->boolean('is_luxury')->default(0);
@@ -25,7 +25,6 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->foreignId('generation_id')->references('id')->on('generations')->onDelete('cascade');
             $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreignId('type_car_id')->references('id')->on('type_cars')->onDelete('cascade');
             $table->foreignId('transmission_id')->references('id')->on('transmissions')->onDelete('cascade');
             $table->foreignId('fuel_type_id')->references('id')->on('fuel_types')->onDelete('cascade');
             $table->foreignId('colour_id')->references('id')->on('colours')->onDelete('cascade');

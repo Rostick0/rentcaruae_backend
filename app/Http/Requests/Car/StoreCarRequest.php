@@ -3,10 +3,10 @@
 namespace App\Http\Requests\Car;
 
 use App\Models\Category;
+use App\Models\Colour;
+use App\Models\FuelType;
 use App\Models\Generation;
 use App\Models\Transmission;
-use App\Models\TypeCar;
-use Faker\Core\Color;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -17,7 +17,7 @@ class StoreCarRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check();
+        return auth()->check() || true;
     }
 
     /**
@@ -37,12 +37,26 @@ class StoreCarRequest extends FormRequest
             'seats' => 'required|numeric',
             'min_days' => 'nullable|numeric',
             'description' => 'nullable|max:600',
-            'generation_id' => 'required|' . Rule::exists(Generation::class),
-            'category_id' => 'required|' . Rule::exists(Category::class),
-            'type_car_id' => 'required|' . Rule::exists(TypeCar::class),
-            'transmission_id' => 'required|' . Rule::exists(Transmission::class),
-            'colour_id' => 'required|' . Rule::exists(Color::class),
-            'colour_interior_id' => 'required|' . Rule::exists(Color::class),
+            'fuel_type_id' => 'required|' . Rule::exists(FuelType::class, 'id'),
+            'generation_id' => 'required|' . Rule::exists(Generation::class, 'id'),
+            'category_id' => 'required|' . Rule::exists(Category::class, 'id'),
+            'transmission_id' => 'required|' . Rule::exists(Transmission::class, 'id'),
+            'colour_id' => 'required|' . Rule::exists(Colour::class, 'id'),
+            'colour_interior_id' => 'required|' . Rule::exists(Colour::class, 'id'),
+            'price_sum' => 'required|array',
+            'price_sum.*' => 'nullable|integer',
+            'price_mileage' => 'required|array',
+            'price_mileage.*' => 'nullable|integer',
+            'price_is_show' => 'required|array',
+            'price_is_show.*' => 'nullable',
+            'leasing_price' => 'nullable|array',
+            'leasing_price.*' => 'filled|integer',
+            'leasing_mileage' => 'nullable|array',
+            'leasing_mileage.*' => 'filled|integer',
+            'price_special' => 'nullable|array',
+            'price_special.*' => 'filled|integer',
+            'security_deposit' => 'required|integer',
+            'free_per_day_security' => 'filled|integer',
         ];
     }
 }

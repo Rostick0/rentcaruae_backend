@@ -14,6 +14,7 @@ class PricePeriod extends Model
         'mileage',
         'type',
         'is_show',
+        'period',
         'car_id',
     ];
 

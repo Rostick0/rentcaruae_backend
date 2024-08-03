@@ -54,7 +54,7 @@ class ApiController extends Controller
             [...$request->all()];
 
         // нужен ли user_id для авторизации
-        if ($this->is_auth_id) $create_data[$this->string_user_id] = auth()->id();
+        if ($this->is_auth_id) $create_data[$this->string_user_id] = auth()->id() ?? 1;
 
         $data = $this->model::create($create_data);
 

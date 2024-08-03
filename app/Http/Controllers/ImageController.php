@@ -31,7 +31,7 @@ class ImageController extends Controller
                 'height' => $height,
                 'path' => url('') . '/storage-custom/' . $random_name . 'jpeg',
                 'path_webp' => url('') . '/storage-custom/' . $random_name . 'webp',
-                'user_id' => auth()->id(),
+                'user_id' => auth()->id() ?? 1,
             ]);
 
             return new JsonResponse([

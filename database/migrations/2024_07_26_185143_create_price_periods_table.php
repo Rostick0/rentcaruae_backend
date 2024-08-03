@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('price_periods', function (Blueprint $table) {
             $table->id();
-            $table->float('price');
+            $table->float('price')->default(0);
             $table->float('mileage')->nullable();
-            $table->string('type'); // price leasing_options rental_terms
+            $table->string('type'); // price leasing_options security_deposit free_per_day_security
             $table->integer('period')->nullable();
-            $table->boolean('is_show');
+            $table->boolean('is_show')->default(1);
             $table->foreignId('car_id')->references('id')->on('cars')->onDelete('cascade');
             $table->timestamps();
         });

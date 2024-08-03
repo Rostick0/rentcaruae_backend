@@ -16,7 +16,6 @@ use App\Http\Controllers\ModelCarController;
 use App\Http\Controllers\OperationController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\TransmissionController;
-use App\Http\Controllers\TypeCarController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -53,7 +52,6 @@ Route::name('api.')
         Route::apiResource('/transmissions', TransmissionController::class)->only(['index']);
 
         Route::apiResource('/options', OptionController::class)->only(['index']);
-        Route::apiResource('/type-cars', TypeCarController::class)->only(['index']);
 
         Route::apiResource('distinct-value', DistinctValueController::class)->only(['index']);
 

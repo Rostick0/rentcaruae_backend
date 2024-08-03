@@ -67,6 +67,11 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
     public function license()
     {
         return $this->morphOne(FileRelationship::class, 'file_relable');

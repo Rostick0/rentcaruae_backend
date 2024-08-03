@@ -20,25 +20,22 @@ class Car extends Model
         'seats',
         'min_days',
         'description',
-        'deposit_free_per_day',
         'generation_id',
         'category_id',
-        'type_car_id',
         'transmission_id',
+        'fuel_type_id',
         'colour_id',
         'colour_interior_id',
         'user_id',
     ];
 
-
+    public function images()
+    {
+        return $this->morphMany(ImageRelat::class, 'image_relatsable');
+    }
     public function generation()
     {
         return $this->belongsTo(Generation::class);
-    }
-
-    public function type_car()
-    {
-        return $this->belongsTo(TypeCar::class);
     }
 
     public function fuel_type()
@@ -66,10 +63,36 @@ class Car extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function price_periods()
+    // public function price_periods()
+    // {
+    //     return $this->hasMany(PricePeriod::class);
+    // }
+
+    public function security_deposit()
     {
-        return $this->hasMany(PricePeriod::class);
+        return $this->hasOne(PricePeriod::class)->where('type', 'security_deposit');
     }
+
+    public function free_per_day_security()
+    {
+        return $this->hasOne(PricePeriod::class)->where('type', 'free_per_day_security');
+    }
+
+    public function price()
+    {
+        return $this->hasMany(PricePeriod::class)->where('type', 'price');
+    }
+
+    public function leasing_price()
+    {
+        return $this->hasMany(PricePeriod::class)->where('type', 'leasing_price');
+    }
+
+    public function price_special()
+    {
+        return $this->hasMany(PricePeriod::class)->where('type', 'price_special');
+    }
+
 
     public function car_options()
     {
