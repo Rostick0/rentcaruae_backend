@@ -28,7 +28,6 @@ class OperationController extends ApiController
         $create_data[$this->string_user_id] = auth()->id() ?? 1;
 
         $create_data['price'] = PeriodPrice::get(Car::find($request->car_id), $request->period, $request->without_deposite);
-
         $data = $this->model::create($create_data);
 
         // $this::extendsMutation($data, $request);

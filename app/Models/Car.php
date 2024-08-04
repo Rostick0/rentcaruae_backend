@@ -63,10 +63,10 @@ class Car extends Model
         return $this->belongsTo(User::class);
     }
 
-    // public function price_periods()
-    // {
-    //     return $this->hasMany(PricePeriod::class);
-    // }
+    public function category()
+    {
+        return $this->hasMany(Category::class);
+    }
 
     public function security_deposit()
     {
