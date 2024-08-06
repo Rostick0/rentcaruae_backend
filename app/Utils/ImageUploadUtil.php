@@ -21,9 +21,9 @@ class ImageUploadUtil
         $random_name = $dir . $date->format('Y/m/d') . '/' . random_int(1000, 9999) . time() . '.';
         $random_name_with_extension = 'public/' . $random_name . $extension;
 
-        Storage::makeDirectory('public/' . $dir . $date->format('Y'));
-        Storage::makeDirectory('public/' . $dir . $date->format('Y/m'));
-        Storage::makeDirectory('public/' . $dir . $date->format('Y/m/d'));
+        Storage::createDirectory('public/' . $dir . $date->format('Y'));
+        Storage::createDirectory('public/' . $dir . $date->format('Y/m'));
+        Storage::createDirectory('public/' . $dir . $date->format('Y/m/d'));
 
         // уменьшение размера фото, если оно больше, чем 1280 пикселей по ширине или высоте
         if ($width > 1280) {
