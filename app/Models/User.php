@@ -21,7 +21,7 @@ class User extends Authenticatable implements JWTSubject
         'full_name',
         'email',
         'tel',
-        'whatsapp',
+        'role',
     ];
 
     /**
@@ -65,20 +65,5 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
-    }
-
-    public function city()
-    {
-        return $this->belongsTo(City::class);
-    }
-
-    public function license()
-    {
-        return $this->morphOne(FileRelationship::class, 'file_relable');
-    }
-
-    public function sertificate()
-    {
-        return $this->morphOne(FileRelationship::class, 'file_relable');
     }
 }

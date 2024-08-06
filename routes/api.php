@@ -6,6 +6,7 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ColourController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DistinctValueController;
 use App\Http\Controllers\EmailCodeController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ModelCarController;
 use App\Http\Controllers\OperationController;
 use App\Http\Controllers\OptionController;
+use App\Http\Controllers\StatisticDayController;
 use App\Http\Controllers\TransmissionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -50,16 +52,16 @@ Route::name('api.')
         Route::apiResource('/categories', CategoryController::class)->only(['index']);
         Route::apiResource('/fuel-types', FuelTypeController::class)->only(['index']);
         Route::apiResource('/transmissions', TransmissionController::class)->only(['index']);
-
+        Route::apiResource('/colours', ColourController::class)->only(['index']);
         Route::apiResource('/options', OptionController::class)->only(['index']);
-
         Route::apiResource('distinct-value', DistinctValueController::class)->only(['index']);
 
-        Route::apiResource('/colours', ColourController::class)->only(['index']);
 
         Route::apiResource('/operations', OperationController::class)->only(['index', 'store']);
+        Route::apiResource('statistics-day', StatisticDayController::class)->only(['index']);
 
         Route::apiResource('/users', UserController::class)->only(['index', 'show']);
+        Route::apiResource('/companies', CompanyController::class)->only(['index', 'show', 'update']);
 
         Route::apiResource('/cars', CarController::class);
     });

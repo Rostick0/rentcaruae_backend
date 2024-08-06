@@ -17,9 +17,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('tel')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('whatsapp')->nullable();
-            $table->integer('city_id')->nullable();
-            $table->string('address')->nullable();
             $table->enum('role', ['seller', 'admin'])->default('seller');
             $table->rememberToken();
             $table->timestamps();

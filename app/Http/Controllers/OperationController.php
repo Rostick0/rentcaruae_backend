@@ -12,6 +12,17 @@ use Rostislav\LaravelFilters\Filter;
 
 class OperationController extends ApiController
 {
+    protected static function getWhere(Request $request = null)
+    {
+        $where = [];
+
+        if (auth()->user()?->role !== 'admin') {
+            // $where[] = ['user_id', '=', auth()?->id(), 'car'];
+        }
+
+        return $where;
+    }
+
     public function __construct()
     {
         $this->model = new Operation;
