@@ -24,10 +24,12 @@ class RegisterAuthRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'name' => 'nullable',
-            'phone' => 'required',
+            'full_name' => 'required|max:255',
+            'tel' => 'required|max:30',
             'email' => 'required|email|unique:users,email|max:255',
             'code' => 'required|' . Rule::exists(EmailCode::class, 'code')->where('email', $this->email),
+            'company.name' => 'required|max:255',
+            'company.website' => 'required|max:255',
             // 'role' => 'nullable|in:dealer,client',
         ];
 

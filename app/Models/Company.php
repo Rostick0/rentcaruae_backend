@@ -10,6 +10,8 @@ class Company extends Model
     use HasFactory;
 
     protected $fillable = [
+        'name',
+        'website',
         'trn_number',
         'aread_name',
         'building_name',
@@ -37,5 +39,10 @@ class Company extends Model
     public function sertificate()
     {
         return $this->morphOne(FileRelationship::class, 'file_relable');
+    }
+
+    public function company_schedules()
+    {
+        return $this->hasMany(CompanySchedule::class);
     }
 }

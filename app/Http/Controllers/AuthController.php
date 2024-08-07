@@ -8,75 +8,13 @@ use App\Http\Requests\Auth\RegisterAuthRequest;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Rostislav\LaravelFilters\Filter;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
-    /**
-     * Login
-     * @OA\Post (
-     *     path="/api/auth/login",
-     *     tags={"Auth"},
-     *     @OA\RequestBody(
-     *         @OA\MediaType(
-     *             mediaType="application/json",
-     *             @OA\Schema(
-     *                 @OA\Property(
-     *                      type="object",
-     *                      @OA\Property(
-     *                          property="email",
-     *                          type="string"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="password",
-     *                          type="string"
-     *                      )
-     *                 ),
-     *                 example={
-     *                     "email":"john@test.com",
-     *                     "password":"johnjohn1"
-     *                }
-     *             )
-     *         )
-     *      ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Success",
-     *          @OA\JsonContent(
-     *              @OA\Property(property="data", type="object",
-     *                  @OA\Property(property="access_token", type="string", example="randomtokenasfhajskfhajf398rureuuhfdshk"),
-     *                  @OA\Property(property="token_type", type="string", example="Bearer"),
-     *                  @OA\Property(property="expires_in", type="number", example=3600),
-     *                  @OA\Property(property="user", type="object",
-     *                      ref="#/components/schemas/UserSchema"
-     *                  ),
-     *              ),
-     *          ),
-     *      ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="Validation error",
-     *          @OA\JsonContent(
-     *                  @OA\Property(property="message", type="string", example="The email field is required. (and 1 more errors)"),
-     *                  @OA\Property(property="errors", type="object",
-     *                      @OA\Property(property="email", type="array", collectionFormat="multi",
-     *                        @OA\Items(
-     *                          type="string",
-     *                          example="The email field is required.",
-     *                          )
-     *                      ),
-     *                      @OA\Property(property="password", type="array", collectionFormat="multi",
-     *                        @OA\Items(
-     *                          type="string",
-     *                          example="The password field is required.",
-     *                          )
-     *                      ),
-     *                  ),
-     *          )
-     *      )
-     * )
-     */
     public function login(LoginAuthRequest $request)
     {
         $user = User::where('email', $request->email)->firstOrFail();
@@ -96,20 +34,24 @@ class AuthController extends Controller
 
     public function register(RegisterAuthRequest $request)
     {
-        $only = $request->only(['name', 'email', 'phone', 'role']);
+        $only = $request->only(['full_name', 'tel', 'email']);
 
         $user = User::create([
             'login' =>  uniqid('@'),
             ...$only,
         ]);
 
-        if ($request->role === 'dealer') {
-            $user->tariff()->create([
-                'user_id' => $user->id,
-                'tariff_id' => $request->tariff_id,
-                'date_end' => Carbon::now()->addMonths(6)
-            ]);
-        }
+        // $user->company()->create([
+
+        // ]);
+
+        // if ($request->role === 'dealer') {
+        //     $user->tariff()->create([
+        //         'user_id' => $user->id,
+        //         'tariff_id' => $request->tariff_id,
+        //         'date_end' => Carbon::now()->addMonths(6)
+        //     ]);
+        // }
 
         $token = JWTAuth::fromUser($user);
         // EmailCode::where('email', $request->email)->delete();
@@ -128,16 +70,16 @@ class AuthController extends Controller
         return $this::createNewToken(auth()?->refresh());
     }
 
-    public function me()
+    public function me(Request $request)
     {
-        if (auth()?->user()?->is_blocked) {
-            return new JsonResponse([
-                'message' => 'The account is banned'
-            ], 400);
-        }
+        // if (auth()?->user()?->is_blocked) {
+        //     return new JsonResponse([
+        //         'message' => 'The account is banned'
+        //     ], 400);
+        // }
 
         return response()->json([
-            'data' => auth()?->user()
+            'data' => Filter::one($request, new User, auth()->id())
         ]);
     }
 

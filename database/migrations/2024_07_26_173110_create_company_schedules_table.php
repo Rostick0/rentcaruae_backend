@@ -12,9 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('company_schedules', function (Blueprint $table) {
-            $table->id();  
+            $table->id();
+            $table->integer('week_day');
+            $table->time('start')->nullable();
+            $table->time('end')->nullable();
+            $table->boolean('is_show')->default(0);
             $table->foreignId('company_id')->references('id')->on('companies')->onDelete('cascade');
-            // $table->
             $table->timestamps();
         });
     }
