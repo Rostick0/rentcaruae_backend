@@ -34,16 +34,11 @@ class AuthController extends Controller
 
     public function register(RegisterAuthRequest $request)
     {
-        $only = $request->only(['full_name', 'tel', 'email']);
+        $user = User::create($request->only(['full_name', 'tel', 'email']));
 
-        $user = User::create([
-            'login' =>  uniqid('@'),
-            ...$only,
-        ]);
-
-        // $user->company()->create([
-
-        // ]);
+        $user->company()->create(
+            $request->validated()['company']
+        );
 
         // if ($request->role === 'dealer') {
         //     $user->tariff()->create([
