@@ -13,7 +13,6 @@ class UpdateCompanyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
         return auth()->check();
     }
 
@@ -34,7 +33,7 @@ class UpdateCompanyRequest extends FormRequest
             'company.building_name' => 'filled|max:255',
             'company.office_number' => 'filled|max:255',
             'company.description' => 'nullable|max:600',
-            // 'company_schedules.*' => 'filled|array|size:7',
+            'company_schedules.*' => 'filled|array|size:7',
             'company_schedules.start.*' => 'filled|date_format:H:i:s',
             'company_schedules.end.*' => 'filled|date_format:H:i:s|after:company_schedules.start.*',
             'company_schedules.is_show.*' => '',

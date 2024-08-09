@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Company;
+use App\Models\User;
 use App\Observers\CompanyObserver;
 use Illuminate\Support\ServiceProvider;
 
@@ -13,7 +14,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
     }
 
     /**
@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        auth()->setUser(User::find(1));
         Company::observe(CompanyObserver::class);
     }
 }

@@ -36,7 +36,7 @@ class OperationController extends ApiController
             ($this->store_request)->rules()
         )];
 
-        $create_data[$this->string_user_id] = auth()->id() ?? 1;
+        $create_data[$this->string_user_id] = auth()->id();
 
         $create_data['price'] = PeriodPrice::get(Car::find($request->car_id), $request->period, $request->without_deposite);
         $data = $this->model::create($create_data);

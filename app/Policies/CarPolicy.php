@@ -37,7 +37,6 @@ class CarPolicy
      */
     public function update(User $user, Car $car): bool
     {
-        return true;
         return $user->id === $car->user_id || $user->role === 'admin';
     }
 

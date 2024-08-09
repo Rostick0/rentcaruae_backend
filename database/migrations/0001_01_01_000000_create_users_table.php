@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('tel')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('role', ['seller', 'admin'])->default('seller');
+            $table->boolean('is_verified')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

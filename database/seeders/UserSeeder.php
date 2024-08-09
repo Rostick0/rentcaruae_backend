@@ -19,6 +19,10 @@ class UserSeeder extends Seeder
             'tel' => '88005553535',
         ];
 
-        User::create($data);
+        $user = User::create($data);
+
+        $user->company()->create([
+            'name' => 'company'
+        ]);
     }
 }
