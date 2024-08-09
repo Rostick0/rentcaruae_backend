@@ -96,6 +96,23 @@ class CarController extends ApiController
         }
     }
 
+    protected static function getWhere(Request $request = null)
+    {
+        $result = [];
+
+
+        if (isset($request->user_id)) {
+            $where[] = ['user_id', '=', auth()->id()];
+
+            return $where;
+        }
+        if (auth()?->user()?->role !== 'admin') {
+            $where[] = ['is_show', '=', '1'];
+        }
+
+        return $result;
+    }
+
     public function __construct()
     {
         $this->model = new Car;
