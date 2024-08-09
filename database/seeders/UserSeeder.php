@@ -22,7 +22,8 @@ class UserSeeder extends Seeder
         $user = User::create($data);
 
         $user->company()->create([
-            'name' => 'company'
+            'name' => 'company',
+            'city_id' => 1,
         ]);
     }
 }
